@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
 use App\Models\Post;
 use Carbon\Carbon;
@@ -35,7 +36,7 @@ class HomeController extends Controller
         $post = Post::find($id);
         return view('posts.show',compact('post'));
     }
-    public function storeComment($id,Request $request)
+    public function storeComment($id,CommentRequest $request)
     {
         Comment::create([
             "comment" => $request->comment,
