@@ -4,6 +4,7 @@ namespace App\DataTables;
 
 use App\Models\Post;
 use App\Traits\DataTableAssetsTrait;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
@@ -43,7 +44,7 @@ class PostDataTable extends DataTable
      */
     public function query(Post $model)
     {
-        return $model->newQuery();
+        return $model->where('author',Auth::id())->newQuery();
     }
 
     /**

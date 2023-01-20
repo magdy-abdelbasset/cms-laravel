@@ -5,6 +5,7 @@ namespace App\DataTables;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Traits\DataTableAssetsTrait;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
@@ -43,7 +44,7 @@ class CommentDataTable extends DataTable
     public function query(Comment $model)
     {
 
-        return $model->newQuery();
+        return $model->where('user_id',Auth::id())->newQuery();
     }
 
     /**
